@@ -11,3 +11,5 @@ server.listen()
 while True:
     client, addr = server.accept()
     client.send(b'Sala')
+    sala = client.recv(1024).decode()
+    name = client.recv(1024).decode()
