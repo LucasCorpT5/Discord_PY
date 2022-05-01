@@ -10,8 +10,11 @@ server.listen()
 
 salas = {}
 
-def broadcast():
-    pass
+def broadcast(sala, mensagem):
+    for i in salas[sala]:
+        if isinstance(mensagem, str):
+            mensagem = mensagem.encode()
+        i.send(mensagem)
 
 while True:
     client, addr = server.accept()
