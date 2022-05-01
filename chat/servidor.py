@@ -16,6 +16,10 @@ def broadcast(sala, mensagem):
             mensagem = mensagem.encode()
         i.send(mensagem)
 
+def enviarMensagem(nome, sala, client):
+    while True:
+        mensagem = client.recv(1024)
+
 while True:
     client, addr = server.accept()
     client.send(b'SALA')
@@ -25,3 +29,4 @@ while True:
         salas[sala] = []
     salas[sala].append(client)
     print(f"{nome} se conectou na sala {sala}! INFO {addr}")
+    broadcast(sala, f'{nome} Entrou na sala!\n')
