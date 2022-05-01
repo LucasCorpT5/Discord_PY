@@ -55,5 +55,6 @@ class Chat:
 
     def enviarMensagem(self):
         mensagem = self.envia_mensagem.get()
+        self.client.send(mensagem.encode())
 
 chat = Chat()
