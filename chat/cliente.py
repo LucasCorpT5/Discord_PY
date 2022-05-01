@@ -18,3 +18,12 @@ class Chat:
 
         self.nome = simpledialog.askstring('Nome', 'Digite seu nome!', parent=login)
         self.sala = simpledialog.askstring('Sala', 'Digite a sala que deseja etrar!', parent=login)
+    
+    def janela(self):
+        self.root = Tk()
+        self.root.geometry("800x800")
+        self.root.title('Chat')
+
+        self.caixa_texto = Text(self.root)
+        self.caixa_texto.place(relx=0.05, rely=0.01)
+chat = Chat()
