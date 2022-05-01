@@ -46,12 +46,15 @@ class Chat:
 
     def conecta(self):
         while True:
-            recebido = self.cliente.recv(1024)
+            recebido = self.client.recv(1024)
             if(recebido == b'SALA'):
                 self.client.send(self.sala.encode())
                 self.client.send(self.nome.encode())
             else:
-                self.caixa_texto.insert('end', rcebido.decode())
+                try:
+                    self.caixa_texto.insert('end', recebido.decode())
+                except:
+                    pass
 
     def enviarMensagem(self):
         mensagem = self.envia_mensagem.get()
