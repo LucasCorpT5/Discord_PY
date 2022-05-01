@@ -10,6 +10,9 @@ server.listen()
 
 salas = {}
 
+def broadcast():
+    pass
+
 while True:
     client, addr = server.accept()
     client.send(b'SALA')
