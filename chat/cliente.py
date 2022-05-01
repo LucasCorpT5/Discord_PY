@@ -8,8 +8,8 @@ class Chat:
     def __init__(self):
         HOST = 'localhost'
         PORT = 55556
-        # self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        # self.client.connect((HOST, PORT))
+        self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.client.connect((HOST, PORT))
         login = Tk()
         login.withdraw()
 
@@ -32,9 +32,23 @@ class Chat:
         self.envia_mensagem.place(relx=0.05, rely=0.8, width=500, height=20)
 
         self.btn_enviar = Button(self.root, text='Enviar', command=self.enviarMensagem)
-        self.btn_enviar.place(relx=0.05, rely=0.8, width=100, height=20)
+        self.btn_enviar.place(relx=0.7, rely=0.8, width=100, height=20)
+        self.root.protocol("WM_DELETE_WINDOW", self.fechar)
 
         self.root.mainloop()
+
+    def fechar(self):
+        self.root.destroy()
+        self.client.close()
+
+    def conecta(self):
+        while True:
+            recebido = self.cliente.recv(1024)
+            if(recebido == b'SALA'):
+                self.client.send(self.sala.encode())
+                self.client.send(self.nome.encode())
+            else:
+                pass
 
     def enviarMensagem(self):
         pass
