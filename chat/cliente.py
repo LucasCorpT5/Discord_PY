@@ -18,6 +18,9 @@ class Chat:
 
         self.nome = simpledialog.askstring('Nome', 'Digite seu nome!', parent=login)
         self.sala = simpledialog.askstring('Sala', 'Digite a sala que deseja etrar!', parent=login)
+
+        thread = threading.Thread(target=self.conecta)
+        thread.start()
         self.janela()
     
     def janela(self):
@@ -48,9 +51,9 @@ class Chat:
                 self.client.send(self.sala.encode())
                 self.client.send(self.nome.encode())
             else:
-                pass
+                self.caixa_texto.insert('end', rcebido.decode())
 
     def enviarMensagem(self):
-        pass
+        mensagem = self.envia_mensagem.get()
 
 chat = Chat()
