@@ -7,7 +7,7 @@ from tkinter import simpledialog
 class Chat:
     def __init__(self):
         HOST = 'localhost'
-        PORT = 55556
+        PORT = 55555
         self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.client.connect((HOST, PORT))
         login = Tk()
