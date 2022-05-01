@@ -14,8 +14,8 @@ while True:
     client, addr = server.accept()
     client.send(b'SALA')
     sala = client.recv(1024).decode()
-    name = client.recv(1024).decode()
+    nome = client.recv(1024).decode()
     if sala not in salas.keys():
         salas[sala] = []
     salas[sala].append(client)
-    print(salas)
+    print(f"{nome} se conectou na sala {sala}! INFO {addr}")
