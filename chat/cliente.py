@@ -8,8 +8,8 @@ class Chat:
     def __init__(self):
         HOST = 'localhost'
         PORT = 55556
-        self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.client.connect((HOST, PORT))
+        # self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        # self.client.connect((HOST, PORT))
         login = Tk()
         login.withdraw()
 
@@ -27,4 +27,5 @@ class Chat:
 
         self.caixa_texto = Text(self.root)
         self.caixa_texto.place(relx=0.05, rely=0.01, width=780, height=680)
+        self.root.mainloop()
 chat = Chat()
